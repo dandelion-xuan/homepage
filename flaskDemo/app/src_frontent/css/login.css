@@ -1,0 +1,42 @@
+
+/**
+ * Bootstrap扩展
+ */
+/**
+ * 公共組件
+**/
+
+
+
+/**
+ * login
+ */
+#login > form{
+    margin: 0 auto;
+    width: 250px;
+}
+#login > form > .form-group{
+	display: block;
+	margin: 10px auto;
+	/*width: 50px;*/
+}
+#login > form > div > input{
+	/*display: block;*/
+	width: 100%;
+}
+#login > form > div > .error{
+	color: #c70d0d;
+	visibility: hidden;
+}
+#login > form > div > span{
+	visibility: hidden;
+}
+#login > form  #check-box{
+	
+}
+#login > form > button{
+	display: block;
+}
+#login > form > .has-feedback{
+	position: relative;
+}

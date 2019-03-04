@@ -1,0 +1,90 @@
+/**
+ * 个人主页
+**/
+
+a{
+	color: #58d231;
+}
+a:hover{
+	/*color: #5ac135;*/
+	color: #4b9e2e;
+}
+blockquote {
+    padding: 10px 20px;
+    margin: 20px 0 5px;
+    font-size: 17.5px;
+    border-left: 5px solid #58d231;
+}
+
+
+.icon-happy:before {
+  content: "\e9df";
+}
+.icon-smile:before {
+  content: "\e9e1";
+}
+.icon-sad:before {
+  content: "\e9e5";
+}
+.icon-grin:before {
+  content: "\e9e9";
+}
+.icon-angry:before {
+  content: "\e9ed";
+}
+
+/*header部分放去了base.css*/
+
+
+#outline{
+    margin-left: 300px;
+}
+#outline .post-date{
+    display: block;
+    margin-top: -.5rem;
+    color: #9a9a9a;
+}
+#outline .mind,
+#outline .diary,
+#outline .album{
+	background-color: #fffcf4;
+	margin: 20px auto;
+}
+#minds{
+	
+}
+#minds > .mind{
+	width: 100%;
+	/*background-color: #f1e4e4;*/
+}
+#minds > .mind > .mind-content{
+
+}
+#diaries{
+}
+#diaries > .diary{
+	width:100%;
+	/*background-color: #eee;*/
+}
+#diaries > .diary > .dia-title{
+
+}
+#diaries > .diary > .dia-summary{
+
+}
+.modal{
+	top:80px;
+}
+#album{
+	/*height: 100px;*/
+	/*background-color: blue;*/
+}
+#album > .album{
+	width: 100%;
+}
+#album .img-thumbnail{
+	height: 100px;
+	width: auto;
+	margin: 5px auto;
+}
+

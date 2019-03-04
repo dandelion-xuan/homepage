@@ -1,0 +1,20 @@
+
+#signup{
+
+}
+#signup > form{
+    margin: 0 auto;
+    width: 400px;
+}
+#signup > form > .form-group{
+	display: block;
+	margin: 10px auto;
+	/*width: 50px;*/
+}
+#signup > form > div > input{
+	/*display: block;*/
+	width: 100%;
+}
+.error{
+	color: #c70d0d;
+}
