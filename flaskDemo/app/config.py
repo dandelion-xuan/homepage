@@ -8,6 +8,6 @@ class db_config():
     PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD', default = 'root')
     DATABASE = os.getenv('MYSQL_DATABASE', default = 'homepage')
     HOST = os.getenv('DB_HOST', default = '95.163.202.160')
-    PORT = os.getenv('DB_PORT', default = '3308')
+    PORT = os.getenv('DB_PORT', default = 3308)
 
 config = db_config()

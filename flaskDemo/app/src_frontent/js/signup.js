@@ -56,24 +56,24 @@ $(function(){
         dataType: "json",
         data:{ username: username,email: email,password: password },
         success: function(data){
+          aler(data)
         //接受返回的数据，前端判断采取的动作
             if(data){
-               if(data.message=="false"){
-                   alert('密码错误，请重新输入');
-                   window.location.href="login";
-               }else{
-                   alert('登陆成功');
-                   window.location.href="index";
+               if(data.errorcode==1){
+                   alert('该用户名已存在，请重新输入');
+                   // window.location.href="login";
+               }else(data.errorcode == 0){
+                   alert('注册成功');
+                   // window.location.href="index";
                }
             } else{
-
-
+                alert('插入失败')
             }
         }
     });
 });
     // ajax部分
-    var xhr = new XMLHttpRequest()
-    xhr.open('POST','../html/signup.html')
-    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+    // var xhr = new XMLHttpRequest()
+    // xhr.open('POST','../html/signup.html')
+    // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
   });

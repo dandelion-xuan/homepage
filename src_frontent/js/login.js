@@ -4,36 +4,6 @@ $(function(){
 	/**
  * login
  */
- 	$("#login_submit").click(function(){
-    var username=$('#username').val();
-    var password=$('#password').val();
-    //这里实现对 username和password格式的判断
-    //........
-
-    //发送ajax请求 使用post方式发送json字符串给后台login
-    $.ajax({
-        type: "post",
-        url: "http://localhost:3000/login",
-        dataType: "json",
-        data:{ username: username, password: password },
-        success: function(data){
-        //接受返回的数据，前端判断采取的动作
-            if(data){
-               if(data.message=="false"){
-                   alert('密码错误，请重新输入');
-                   window.location.href="login";
-               }else{
-                   alert('登陆成功');
-                   window.location.href="index";
-               }
-            } else{
-
-
-            }
-        }
-    });
-});
- 	
 	function mailError(){
 		$('#email').parent().addClass("has-error");
 		$('#inputStatus1').addClass('glyphicon-remove').removeClass('glyphicon-ok').css('visibility','visible');
@@ -57,4 +27,35 @@ $(function(){
 		// console.log($('#inputError2Status').siblings('span'));
 	}
 	// pwdSuccess();
+
+	$("#loginSubmit").click(function(){
+		var email=$('#email').val();
+		var password=$('#password').val();
+		alert("进来click" + password)
+		//发送ajax请求 使用post方式发送json字符串给后台login
+		$.ajax({
+			type: "post",
+			url: "http://localhost:8888/login",
+			dataType: "json",
+			data:{ email: email,password: password },
+			success: function(data){
+			//接受返回的数据，前端判断采取的动作
+				if(data){
+				   if(data.errorcode==1){
+					alert('该用户名不存在，请重新输入');
+					// mailError()
+				   }else if(data.errorcode == 0){
+					   alert('login成功');
+					//    pwdSuccess()
+				   }
+				 	else{
+					alert('插入失败')
+					}
+				}
+			  },
+			  error:function(data){
+				  alert('fffff');
+			  }	
+		});
+	});
 });

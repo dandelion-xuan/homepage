@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pymysql, time
-# from config import config
+from config import config
 # from lib.logger import log
 # from lib.errors.expection import DatabaseError
 
@@ -11,10 +11,11 @@ def connect_database():
     while connect_time:
         try:
             db = pymysql.connect(
-                    user=config.DB.USER, \
-                    password=config.DB.PASSWORD, \
-                    database=config.DB.DATABASE, \
-                    host=config.DB.HOST, \
+                    user=config.USER, \
+                    password=config.PASSWORD, \
+                    database=config.DATABASE, \
+                    host=config.HOST, \
+                    port=config.PORT, \
                     autocommit=False
                 )
             # db = pymysql.connect(
