@@ -51,6 +51,10 @@ $(function(){
   $.ajax({
       type: "post",
       url: "http://localhost:8888/signup",
+      xhrFields: {
+          withCredentials: true
+      },
+      crossDomain: true,
       dataType: "json",
       data:{ username: username,email: email,password: password },
       success: function(data){

@@ -18,14 +18,6 @@ def connect_database():
                     port=config.PORT, \
                     autocommit=False
                 )
-            # db = pymysql.connect(
-            #     user = 'root',\
-            #     password = 'root',\
-            #     database = 'homepage',\
-            #     host = '95.163.202.160',\
-            #     port = 3308,\
-            #     autocommit=False
-            #     )
             return db
         except BaseException as e:
             # log.error(str(e))
@@ -56,6 +48,7 @@ class Database:
             print (str(e))
             cls.global_db.rollback()
             # raise DatabaseError("internal database error")
-# sql = 'show tables;'
-# result = Database.execute(sql)
-# print (result)
+
+    @classmethod
+    def get_last_insert_id(cls):
+        return cls.execute('select @@IDENTITY')[0][0];

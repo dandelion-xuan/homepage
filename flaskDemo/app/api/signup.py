@@ -1,6 +1,6 @@
 from server.server import app
 from flask import jsonify,send_file
-from flask import request
+from flask import request,session
 from models import database
 
 @app.route('/signup', methods=['POST', 'GET'])
@@ -8,7 +8,7 @@ def  signup():
 	username = request.form['username']
 	email = request.form['email']
 	password = request.form['password']
-	countSql = "select count(username) from user where username = '%s'" % username
+	countSql = "select count(email) from user where email = '%s'" % email
 	count = database.Database.execute(countSql)
 	# print (result[0][0])
 	'''
@@ -24,7 +24,8 @@ def  signup():
 		result = database.Database.execute(insertSql)
 		# print(result)
 		if(result is ()):
-			# print ("hhh")
+			uID = database.Database.get_last_insert_id()
+			session['user_id'] = uID
 			data = {
 				'message':'success',
 				'errorcode':0

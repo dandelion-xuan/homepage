@@ -28,14 +28,18 @@ $(function(){
 	}
 	// pwdSuccess();
 
-	$("#loginSubmit").click(function(){
+	$("#loginSubmit").click(function(e){
+		e.preventDefault();
 		var email=$('#email').val();
 		var password=$('#password').val();
-		alert("进来click" + password)
 		//发送ajax请求 使用post方式发送json字符串给后台login
 		$.ajax({
 			type: "post",
 			url: "http://localhost:8888/login",
+            xhrFields: {
+                withCredentials: true
+			},
+			crossDomain: true,
 			dataType: "json",
 			data:{ email: email,password: password },
 			success: function(data){
@@ -47,9 +51,10 @@ $(function(){
 				   }else if(data.errorcode == 0){
 					   alert('login成功');
 					//    pwdSuccess()
+					// window.location.href="/";
 				   }
 				 	else{
-					alert('插入失败')
+					alert('密码错误')
 					}
 				}
 			  },
