@@ -38,7 +38,9 @@ def  diary():
 	result = database.Database.execute(sql)
 	# insert diary success
 	if(result is ()):
+		diaryId = database.Database.get_last_insert_id()
 		data = {
+			'diaryId':diaryId,
 			'message':'success',
 			'errorcode':0
 		}

@@ -7,10 +7,9 @@ $(function(){
 	// $('input:checkbox:last').prop('checked',true) //获取CheckBox最后一个元素
 	// $('.add').append
 
-	console.log($('#hh').val())
-	$('button').click(function(e){
-		e.preventDefault()
-		console.log($('#hh').val())
-		console.log("hhh")
-	})
+	var hcode = `    <p>嘻嘻嘻嘻1</p>
+    <p>嘻嘻嘻嘻2</p>
+    <p>嘻嘻嘻嘻3</p>
+	<p>嘻嘻嘻嘻4</p>`
+	$('.hh').append(hcode)
 });
