@@ -7,6 +7,8 @@
 	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
 	<title>Diaries</title>
 	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/jquery/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<link rel="stylesheet" type="text/css" href="../css/diaries.css">
 </head>
@@ -44,93 +46,27 @@
 		<div class="right"><img src="../images/loverhome.png"></div>
 	</header>
 	<section>
-		<!-- <div id="nav-bar" class="col-md-2" data-spy="affix">
-			<ul class="nav nav-pills nav-stacked" role="tablist">
-				<li role="presentation">
-					<a href="#minds">片语</a>
-				</li>
-				<li role="presentation">
-					<a href="#diaries">日记</a>
-				</li>
-				<li role="presentation">
-					<a href="#album">相册</a>
-				</li>
-			</ul>
-		</div> -->
 		<div id="outline" class="col-md-9">
 			<form id="sendDiaryForm">
 				<!-- 标题 -->
 				<div class="title-box">
-					<input autofocus type="text" id="txtTitle" maxlength="100" placeholder="输入文章标题">
+					<input autofocus type="text" id="txtTitle" maxlength="100" placeholder="输入文章标题" value="happy">
 					<span class="max-length"><span class="max-length-change">0</span>/100</span>
 				</div>
 				<!-- 富文本编辑器 -->
 				<div id="editor">
 					<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
 				</div>
-
-				<div class="form-group row form-control-sm">
-					<label class="labTitle col-form-label">个人分类：</label>
-					<div class="txt-box">
-						<div class="tag-box d-flex flex-row" id="categorieBox">
-							<input name="hidTags" id="hidCategoriesF" value="" type="hidden">
-							<button class="btn-add-tag" id="addCategorie">
-								<i class="xheIcon icon-tianjia mr8" aria-hidden="true">
-									<!--?xml version="1.0" standalone="no"?--><svg t="1535953779842" class="icon" style=""
-										viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3712"
-										xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
-										<defs>
-											<style type="text/css"></style>
-										</defs>
-										<path
-											d="M736 64H288C164.8 64 64 164.8 64 288v448c0 123.2 100.8 224 224 224h448c123.2 0 224-100.8 224-224V288c0-123.2-100.8-224-224-224z m-28.8 504h-140.8v140.8c0 30.4-25.6 56-56 56s-56-25.6-56-56v-140.8h-140.8c-30.4 0-56-25.6-56-56s25.6-56 56-56h140.8v-140.8c0-30.4 25.6-56 56-56s56 25.6 56 56v140.8h140.8c30.4 0 56 25.6 56 56s-24 56-56 56z"
-											p-id="3713" fill="#349edf"></path>
-									</svg></i>添加新分类
-							</button>
-						</div>
-						<div class="categorie-list" style>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" value="css" id="7086596">
-									<i class="lab-chk-icon" for="chk01">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" t="1514450759045"
-											class="icon-checked" viewBox="0 0 1024 1024">
-											<path
-												d="M768 0H256C115.2 0 0 115.2 0 256v512c0 140.8 115.2 256 256 256h512c140.8 0 256-115.2 256-256V256c0-140.8-115.2-256-256-256z m17.6 377.6L460.8 728c-9.6 9.6-27.2 14.4-40 14.4-14.4 0-32-3.2-41.6-14.4l-142.4-153.6c-17.6-19.2-17.6-49.6 0-68.8 17.6-19.2 46.4-19.2 64 0l120 128 300.8-324.8c17.6-19.2 46.4-19.2 64 0s17.6 49.6 0 68.8z"
-												p-id="2164" fill="#7ed321" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
-										</svg>
-									</i>
-									<span class="spanIsAgree">css</span>
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" value="HTML" id="7106539">
-									<i class="lab-chk-icon" for="chk01">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" t="1514450759045"
-											class="icon-checked" viewBox="0 0 1024 1024">
-											<path
-												d="M768 0H256C115.2 0 0 115.2 0 256v512c0 140.8 115.2 256 256 256h512c140.8 0 256-115.2 256-256V256c0-140.8-115.2-256-256-256z m17.6 377.6L460.8 728c-9.6 9.6-27.2 14.4-40 14.4-14.4 0-32-3.2-41.6-14.4l-142.4-153.6c-17.6-19.2-17.6-49.6 0-68.8 17.6-19.2 46.4-19.2 64 0l120 128 300.8-324.8c17.6-19.2 46.4-19.2 64 0s17.6 49.6 0 68.8z"
-												p-id="2164" fill="#7ed321" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
-										</svg>
-									</i>
-									<span class="spanIsAgree">HTML</span>
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" value="面向对象分析与设计" id="7737935">
-									<i class="lab-chk-icon" for="chk01">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" t="1514450759045"
-											class="icon-checked" viewBox="0 0 1024 1024">
-											<path
-												d="M768 0H256C115.2 0 0 115.2 0 256v512c0 140.8 115.2 256 256 256h512c140.8 0 256-115.2 256-256V256c0-140.8-115.2-256-256-256z m17.6 377.6L460.8 728c-9.6 9.6-27.2 14.4-40 14.4-14.4 0-32-3.2-41.6-14.4l-142.4-153.6c-17.6-19.2-17.6-49.6 0-68.8 17.6-19.2 46.4-19.2 64 0l120 128 300.8-324.8c17.6-19.2 46.4-19.2 64 0s17.6 49.6 0 68.8z"
-												p-id="2164" fill="#7ed321" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
-										</svg>
-									</i>
-									<span class="spanIsAgree">面向对象分析与设计</span>
-								</label>
-							</div>
+				<!-- 分类部分 -->
+				<div id="categoryForm">
+					<label class="labTitle col-md-2">个人分类：</label>
+					<div class="txt-box col-md-10">
+						<button class="btn-add-tag" id="add-new-catogory">
+							<i class="icon-plus"></i>  添加新分类
+						</button>
+						<div class="categorie-list">
+							<input type="radio" value="default" class="cbox" name="cbox" checked="checked">
+							<label>Default</label>
 						</div>
 					</div>
 				</div>
@@ -138,20 +74,26 @@
 			</form>
 		</div>
 	</section>
+	<!-- 新增分类弹框 -->
+	<div id="dialog-form" title="新增日记分类">
+		<form>
+			<fieldset>
+				<label for="name">分类名称：</label>
+				<input type="text" name="name" id="name" value="sun" class="text ui-widget-content ui-corner-all">
+				<!-- Allow form submission with keyboard without duplicating the dialog button -->
+				<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+			</fieldset>
+		</form>
+		<p class="validateTips">All form fields are required.</p>
+	</div>
+	<p class="qwe">sdfsdfsdfsdf</p>
 	<script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/jquery/jquery-ui.js"></script>
 	<script src="../lib/validate/jquery.validate.js"></script>
 	<script src="../lib/validate/messages_zh.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.js"></script>
 	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
 	<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
-	<script type="text/javascript">
-		var E = window.wangEditor
-		var editor = new E('#editor')
-		// 或者 var editor = new E( document.getElementById('editor') )
-		editor.customConfig.uploadImgShowBase64 = true 
-		// editor.customConfig.uploadImgServer = '/upload' 
-		editor.create()
-	</script>
 	<script src="../js/base.js"></script>
 	<script src="../js/diaries.js"></script>
 </body>
