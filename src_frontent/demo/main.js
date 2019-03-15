@@ -12,4 +12,5 @@ $(function(){
     <p>嘻嘻嘻嘻3</p>
 	<p>嘻嘻嘻嘻4</p>`
 	$('.hh').append(hcode)
+	$.myFunc();
 });

@@ -184,10 +184,10 @@ section{
     font-size: 8px;
 }
 /*<!-- 当评论数为0时，此行生效 -->*/
-/*.disable-cusor,button, html input[type="button"]{
+/* .disable-cusor,button, html input[type="button"]{
     cursor: not-allowed;
-}
-*/
+} */
+
 .write-comment{
 	margin-left: 8px;
 }
