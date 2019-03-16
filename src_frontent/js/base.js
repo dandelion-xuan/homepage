@@ -94,56 +94,35 @@ function showMind(content, uploadDate, commentNum, mindId) {
 		'<p class="mind-content">' + content + '</p>' +
 		'<span class="post-date">' + uploadDate + '</span>' +
 		'<div class="comment">' +
-		'<input type="button" data-toggle="collapse" class="comment-btn comment-list" value="已评论(' + commentNum + ')">' +
+		'<input type="button" data-toggle="collapse" class="comment-btn comment-list get-comments" value="已评论(' + commentNum + ')">' +
 		// <!-- 当评论数为0时，加上disable-cusor标签 -->
-		'	<span class="glyphicon glyphicon-menu-down"></span>' +
+		'	<span class="glyphicon glyphicon-menu-down get-comments"></span>' +
 		'</input>' +
-		'<input type="button" id="write_comment_btn" class="comment-btn write-comment" value="写评论" data-toggle="modal" data-target="#write-comment-form"></input>'
+		'<input type="button" id="write_comment_btn" class="comment-btn write-comment" value="写评论" data-toggle="modal" data-target="#write-comment-form"></input>' +
+		'</div>' +
+		'</div>'
 	// needs args:critic_id,comment content,comment_id
 
 	$('#minds').append(mindCode)
 }
 
-function showComments(commentNum, comment_id, critic_username, content) {
-	var commentHtml = '<ul class="media-list hidden">' +
-		'<li class="media">' +
+function showComments(mindID,commentNum, comment_id, critic_username, content,postDate) {
+	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
+	var commentHtml = '<ul class="media-list">' +
+		'<li class="media" id="' + comment_id + '>' +
 		'<div class="media-left">' +
 		'<a href="#">' +
 		'<img class="media-object" src="images/01.jpg" alt="lixuan_zhu">' +
 		'</a>' +
 		'</div>' +
 		'<div class="media-body">' +
-		'<h4 class="media-heading"><a href="#">Media he</a></h4>' +
-		'<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>' +
-		'<div class="media">' +
-		'<div class="media-left">' +
-		'<a href="#">' +
-		'<img class="media-object" src="images/02.jpg" alt="erDog">' +
-		'</a>' +
-		'</div>' +
-		'<div class="media-body">' +
-		'<h4 class="media-heading"><a href="#">Media he</a></h4>' +
-		'<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>' +
-		'</div>' +
-		'</div>' +
+		'<h4 class="media-heading"><a href="#">' + critic_username + '</a></h4>' +
+		'<p>'+ content +'</p>' +
+		'<span class="post-date">' + postDate + '</span>' +
 		'</div>' +
 		'</li>' +
-		'<li class="media">' +
-		'<div class="media-left">' +
-		'<a href="#">' +
-		'<img class="media-object" src="images/03.jpg" alt="stupid_one">' +
-		'</a>' +
-		'</div>' +
-		'<div class="media-body">' +
-		'<h4 class="media-heading"><a href="#">Media he</a></h4>' +
-		'<p>广告需求⽅平台（DSP）：为广告主提供跨竞价市场、跨平台、跨终端的程序化广告投放平台，通过数据整合、分析受众、实现精准投放。</p>' +
-		'</div>' +
-		'</li>' +
-		'</ul>' +
-		'</div>' +
-		'</div>'
-
+		'</ul>'
 	if (commentNum > 0) {
-		$('.comment').append(commentHtml)
+		$('#mind_' + mindID +' .comment').append(commentHtml)
 	}
 }

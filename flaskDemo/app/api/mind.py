@@ -47,7 +47,8 @@ def  write_comment():
 	mindId = request.values['mindId']
 	content = request.values['content']
 	print (content)
-	sql = "insert into mind_comment(critic_id,mind_id,content) values('%s','%s','%s')" % (critic_id,mindId,content)
+	critic_name = database.Database.execute("select username from user where ID = '%s'" % (critic_id))[0][0]
+	sql = "insert into mind_comment(critic_id,critic_name,mind_id,content) values('%s','%s','%s','%s')" % (critic_id,critic_name,mindId,content)
 	result = database.Database.execute(sql)
 	'''
 	errorcode:0表示插入成功，1表示插入失败
@@ -82,11 +83,6 @@ def get_comments():
 	mindId = request.values['mindId']
 	# print(uID)
 	comments = database.Database.execute("select * from mind_comment where mind_id = '%s'" % (mindId))
-	critic_name = database.Database.execute("select username from user where ID = '%s'" % (comments[0][4]))
-	commentId = comments[0]
-	postDate = comments[1]
-	content = comments[2]
-	commentArgs = [commentId,postDate,content,critic_name]
+	print("comments hhh:")
 	print(comments)
-	print(commentArgs)
 	return jsonify(comments)
