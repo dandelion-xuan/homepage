@@ -11,6 +11,23 @@ section #outline{
 	background-color: #c0c0c0;
 	margin-left: 300px;
 }
+.post-date{
+    display: block;
+    margin-top: -.5rem;
+    color: #9a9a9a;
+}
+.mind,
+.diary,
+.album{
+	background-color: #fffcf4;
+	margin: 20px auto;
+}
+#minds{
+	
+}
+#minds > .mind{
+	width: 100%;
+}
 textarea{
 	resize: vertical;
 	overflow: auto;

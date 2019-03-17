@@ -210,3 +210,11 @@ input.comment-btn:hover{
 	margin-right: 50px;
     margin-top: -15px;
 }
+
+a{
+	color: #58d231;
+}
+a:hover{
+	/*color: #5ac135;*/
+	color: #4b9e2e;
+}

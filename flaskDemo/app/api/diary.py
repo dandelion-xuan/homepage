@@ -74,3 +74,14 @@ def  get_categories():
 	for i in range(len(categories)):
 		categoriesArr.append(categories[i][0])
 	return jsonify(categoriesArr)
+
+
+@app.route('/get_diaries', methods=['POST', 'GET'])
+def  get_diaries():
+	uID = session.get('user_id')
+	print(uID)
+	# id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
+	diaries = database.Database.execute("select * from diary where user_id = '%s'" % (uID))
+	# print(len(diaries))
+	return jsonify(diaries)
+
