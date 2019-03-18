@@ -55,12 +55,6 @@ $(function () {
 		})
 	})();
 
-
-	$.extend({
-		'commentedMess': function () {
-
-		}
-	})
 });
 
 // 日期时间格式化
@@ -106,7 +100,7 @@ function showMind(content, uploadDate, commentNum, mindId) {
 	$('#minds').append(mindCode)
 }
 
-function showComments(mindID, commentNum, comment_id, critic_username, content, postDate) {
+function showComments(mindID, comment_id, critic_username, content, postDate) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
 	var commentHtml = '<ul class="media-list">' +
 		'<li class="media" id="' + comment_id + '>' +
@@ -122,16 +116,14 @@ function showComments(mindID, commentNum, comment_id, critic_username, content, 
 		'</div>' +
 		'</li>' +
 		'</ul>'
-	if (commentNum > 0) {
 		$('#mind_' + mindID + ' .comment').append(commentHtml)
-	}
 }
 
 /**
  * 接口请求
  */
 // get and write comments and show
-function comment(commentNum) {
+function comment() {
 	// 点击写评论，返回mind or diary类型评论，mind_id or diary_id
 	var mindId = -1; 
 	var arr = [];//arr[1]为要的id
@@ -167,6 +159,19 @@ function comment(commentNum) {
 				if (data) {
 					if (data.errorcode == 0) {
 						alert('评论成功');
+						var selector = $('#'+mindOrDiary + '_'+Id+' .get-comments');
+						alert(selector.val())
+						var commentNum = selector.val().split(/[()]/)[1];
+						// alert(commentNum)
+						commentNum++;
+						// var commentId, postDate, content, critic_name;
+						// commentId = data.comment[0][0];
+						// critic_name = data.comment[0][5];
+						// content = data.comment[0][2];
+						// postDate = data.comment[0][1];
+						// alert(commentNum)
+						// showComments(Id, commentId, critic_name, content, postDate)
+						selector.val("已评论(" + commentNum + ")")
 					} else {
 						alert('评论失败');
 					}
@@ -211,13 +216,13 @@ function comment(commentNum) {
 						critic_name = data[i][5];
 						content = data[i][2];
 						postDate = data[i][1];
-						console.log("data: " + data[i])
+						// console.log("data: " + data[i])
 						// commentNum, comment_id, critic_username, content,postDate
-						showComments(Id, commentNum, commentId, critic_name, content, postDate)
-						console.log(showComments)
+						showComments(Id, commentId, critic_name, content, postDate)
+						// console.log(showComments)
 					}
 				} else {
-
+					alert("fuck");
 				}
 			},
 			error: function (data) {
@@ -228,7 +233,6 @@ function comment(commentNum) {
 }
 
 // get_minds and show
-var data;
 function get_minds(isIndex){
 	$.ajax({
 		type: 'get',
@@ -240,17 +244,54 @@ function get_minds(isIndex){
 		crossDomain: true,
 		success: function (data) {
 			if (data) {
-				data = data.slice();
-				console.log(data)
+				var content;
+				var uploadDate;
+				var commentNum;
+				var userId;
+				if (data.length == 0) {
+					$('#outline .mind').css('background-color', 'none')
+					$('.comment').css('visibility', 'hidden')
+				} else {
+					var showNum = data.length;
+					if(isIndex){
+						showNum = 3;
+					}
+					for (i = 0; i < showNum; i++) {
+						// content, uploadDate, commentNum, mindID
+						content = data[i][0]
+						uploadDate = data[i][1]
+						commentNum = data[i][2]
+						mindId = data[i][3]
+						showMind(content, uploadDate, commentNum, mindId)
+						if (commentNum == 0) {
+							// 
+						}
+					}
+					if(isIndex){
+						if (data.length <= 3) {
+							$('.see-more').css('visibility', 'hidden')
+						} else {
+							seeMoreHtml = '<p class="see-more">' + '<a href="/html/minds.html">' + '查看更多>>>' + '</a>' + '</p>'
+							$('#mind_' + data[2][3]).append(seeMoreHtml)
+						}
+					}
+					comment();
+					$(".comment-list").click(function () {
+						$(this).siblings('ul').toggleClass("hidden");
+					})
+					$(".glyphicon-menu-down").click(function () {
+						alert('???');
+						$(this).parent().children('ul').toggleClass('hidden');
+					})
+				}
+				// console.log(data)
 			}
 		},
 		error: function (data) {
 			console.log(data)
 		}
 	})
-	return data;
 }
-console.log(get_minds(true))
 
 
 
@@ -267,14 +308,18 @@ function diaries(isIndex){
 		success: function (data) {
 			if (data) {
 				var content;
-				var uploadDate;
+				var postDate;
 				var commentNum;
 				var userId;
 				if (data.length == 0) {
 					$('#outline .diary').css('background-color', 'none')
 					$('.comment').css('visibility', 'hidden')
 				} else {
-					for (i = 0; i < 3; i++) {
+					var showNum = data.length;
+					if(isIndex){
+						showNum = 3;
+					}
+					for (i = 0; i < showNum; i++) {
 						// dia_id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
 						diaryId = data[i][0]
 						postDate = data[i][1]
@@ -296,10 +341,10 @@ function diaries(isIndex){
 						} else {
 							seeMoreHtml = '<p class="see-more">' + '<a href="/html/diaries.html">' + '查看更多>>>' + '</a>' + '</p>'
 							$('#diary_' + data[2][0]).append(seeMoreHtml)
-							console.log(data[2][0])
+							console.log('#diary_' + data[2][0])
 						}
 					}
-
+					comment();
 
 					$(".comment-list").click(function () {
 						$(this).siblings('ul').toggleClass("hidden");
@@ -308,7 +353,6 @@ function diaries(isIndex){
 						$(this).parent().children('ul').toggleClass('hidden');
 					})
 				}
-				comment(commentNum);
 			}
 		},
 		error: function (data) {

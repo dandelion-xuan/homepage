@@ -1,6 +1,6 @@
 function dia_showCutDiary(title, postDate, content, commentNum, diaryId){
     postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm')
- var diaryCode = `<article class="post" id="diary_` + diaryId + `>
+ var diaryCode = `<article class="post" id="diary_` + diaryId + `">
  <div class="post-head">
    <h1 class="post-title"><a href="#">` + title + `</a></h1>
    <div class="post-meta"><time class="post-date">`+ postDate + `</time></div>

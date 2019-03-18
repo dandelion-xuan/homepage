@@ -20,6 +20,7 @@ $(function(){
                      // mailError()
                     }else if(data.errorcode == 0){
                         alert('写入成功');
+                        window.location.reload()
                      //    pwdSuccess()
                     //  window.location.href="/";
                     }
@@ -31,5 +32,7 @@ $(function(){
         })
     })
 
-	minds(false);
+	
 });
+
+get_minds(false);

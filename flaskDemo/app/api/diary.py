@@ -81,7 +81,7 @@ def  get_diaries():
 	uID = session.get('user_id')
 	print(uID)
 	# id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
-	diaries = database.Database.execute("select * from diary where user_id = '%s'" % (uID))
+	diaries = database.Database.execute("select * from diary where user_id = '%s' order by ID desc" % (uID))
 	# print(len(diaries))
 	return jsonify(diaries)
 
