@@ -12,14 +12,15 @@ diaries(true);
 
 function index_showDiary(title, postDate, content, commentNum, diaryId) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm')
+	var url = "/html/diary.html?diary=" + diaryId
 	var diaryCode = `<div class="container diary" id="diary_` + diaryId + `">
 	<h4 class="dia-title">
-		<a href="#">` + title + `</a>
+		<a href="`+url+`">` + title + `</a>
 	</h4>
 	<span class="post-date">`+ postDate + `</span>
 	<p class="dia-summary">`+ content + `</p>
 	<div class="comment">
-		<input type="button" class="comment-btn comment-list" value="已评论(`+ commentNum + `)">
+		<input type="button" class="comment-btn comment-list get-comments" value="已评论(`+ commentNum + `)">
 		<!-- 当评论数为0时，加上disable-cusor标签 -->
 			<span class="glyphicon glyphicon-menu-down"></span>
 		</input>

@@ -45,10 +45,48 @@
 		</div>
 		<div class="right"><img src="../images/loverhome.png"></div>
 	</header>
-	<section>
-		<div id="diaries" class="container"></div>
-	</section>
+	<section class="content-wrap">
+		<div id="diary" class="container">
+			<aside class="col-md-4 sidebar">
+				<div class="widget">
+				  <h4 class="title">类别</h4>
+				  <a href="https://docs.golaravel.com/docs/5.6/" class="btn btn-default btn-block"
+					target="_blank">5.6 文档</a> <a href="https://docs.golaravel.com/docs/5.5/"
+					class="btn btn-default btn-block" target="_blank">5.5 文档</a> <a
+					href="https://docs.golaravel.com/docs/5.4/" class="btn btn-default btn-block" target="_blank">5.4 文档</a>
+				  <a href="https://docs.golaravel.com/docs/5.3/" class="btn btn-default btn-block" target="_blank">5.3 文档</a>
+				  <a href="https://docs.golaravel.com/docs/5.2/" class="btn btn-default btn-block" target="_blank">5.2 文档</a>
+				  <a href="https://docs.golaravel.com/docs/5.1/" class="btn btn-default btn-block" target="_blank">5.1 文档</a>
+				  <a href="https://docs.golaravel.com/docs/5.0/" class="btn btn-default btn-block" target="_blank">5.0 文档</a>
+				  <a href="https://docs.golaravel.com/docs/4.2/" class="btn btn-default btn-block" target="_blank">4.2
+					中文文档</a> <a href="https://docs.golaravel.com/docs/4.1/" class="btn btn-default btn-block"
+					target="_blank">4.1 中文文档</a> <a href="https://docs.golaravel.com/docs/4.0/"
+					class="btn btn-default btn-block" target="_blank">4.0 中文文档</a> <a href="https://lumen.golaravel.com/docs/"
+					class="btn btn-default btn-block" target="_blank">Lumen 中文文档</a>
+				</div>
+			  </aside>
+		</div>
 
+		
+	</section>
+	<!-- 写评论模态框 -->
+	<div class="modal fade" id="write-comment-form" tabindex="-1" role="dialog" aria-labelledby="login_form_title">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h4 class="modal-title" id="login_form_title">写评论</h4>
+			</div>
+			<div class="modal-body">
+				<textarea id="txt" cols="68" rows="5" autofocus></textarea>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary" id="saveComment">Save changes</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 	<script src="../lib/jquery/jquery.js"></script>
     <script src="../lib/jquery/jquery-ui.js"></script>
 	<script src="../lib/validate/jquery.validate.js"></script>
@@ -57,7 +95,7 @@
 	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
 	<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
 	<script src="../js/base.js"></script>
-	<script src="../js/diaries.js"></script>
+	<script src="../js/diary.js"></script>
 </body>
 
 </html>

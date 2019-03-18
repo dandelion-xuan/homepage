@@ -748,7 +748,7 @@ pre {
 }
 
 .sidebar .widget {
-	background: #fff;
+	background: #fffcf4;
 	padding: 21px 30px
 }
 
@@ -771,8 +771,8 @@ pre {
 .widget .title:after {
 	content: "";
 	width: 90px;
-	height: 1px;
-	background: #f4645f;
+	height: 2px;
+	background: #58d231;
 	position: absolute;
 	left: 0;
 	bottom: -1px
@@ -1002,4 +1002,12 @@ pre {
   /* 规定几行显示省略号 */
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.col-md-4{
+	float: left;
+}
+
+.col-md-8{
+	float: right;
 }

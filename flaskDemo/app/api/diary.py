@@ -80,8 +80,19 @@ def  get_categories():
 def  get_diaries():
 	uID = session.get('user_id')
 	print(uID)
+	'''
+SELECT A.ID AS dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name
+from diary AS A,dia_category AS B
+WHERE A.category_id = B.ID AND A.user_id=1;
+	'''
 	# id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
-	diaries = database.Database.execute("select * from diary where user_id = '%s' order by ID desc" % (uID))
+	diaries = database.Database.execute("SELECT A.ID AS dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name from diary AS A,dia_category AS B WHERE A.category_id = B.ID AND A.user_id = '%s' order by dia_id desc;" % (uID))
 	# print(len(diaries))
 	return jsonify(diaries)
+
+@app.route("/get_diary",methods=['POST','GET'])
+def get_diary():
+	dia_id = request.values['dia_id']
+	diary = database.Database.execute("SELECT A.ID AS dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name from diary AS A,dia_category AS B WHERE A.category_id = B.ID AND A.ID = '%s'" % (dia_id))
+	return jsonify(diary)
 

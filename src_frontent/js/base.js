@@ -100,7 +100,7 @@ function showMind(content, uploadDate, commentNum, mindId) {
 	$('#minds').append(mindCode)
 }
 
-function showComments(mindID, comment_id, critic_username, content, postDate) {
+function showComments(mindID, comment_id, critic_username, content, postDate,isDiary) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
 	var commentHtml = '<ul class="media-list">' +
 		'<li class="media" id="' + comment_id + '>' +
@@ -116,7 +116,12 @@ function showComments(mindID, comment_id, critic_username, content, postDate) {
 		'</div>' +
 		'</li>' +
 		'</ul>'
+	if(isDiary){
+		$('#diary_' + mindID + ' .comment').append(commentHtml)
+	}else{
 		$('#mind_' + mindID + ' .comment').append(commentHtml)
+	}
+		
 }
 
 /**
@@ -160,7 +165,7 @@ function comment() {
 					if (data.errorcode == 0) {
 						alert('评论成功');
 						var selector = $('#'+mindOrDiary + '_'+Id+' .get-comments');
-						alert(selector.val())
+						// alert(selector.val())
 						var commentNum = selector.val().split(/[()]/)[1];
 						// alert(commentNum)
 						commentNum++;
@@ -189,8 +194,12 @@ function comment() {
 		e.preventDefault();
 		// clickNum++;
 		var parentId = $(this).parent().parent().attr('id');
-		// console.log(parentId)
+		// alert(parentId)
 		arr = parentId.split('_');
+		if (arr[0] == 'diary') {
+			isDiary = true;
+			mindOrDiary = 'diary'
+		}
 		Id = arr[1];
 		if (Id in clickedId) {
 			return;
@@ -216,9 +225,9 @@ function comment() {
 						critic_name = data[i][5];
 						content = data[i][2];
 						postDate = data[i][1];
-						// console.log("data: " + data[i])
+						console.log("data: " + data[i])
 						// commentNum, comment_id, critic_username, content,postDate
-						showComments(Id, commentId, critic_name, content, postDate)
+						showComments(Id, commentId, critic_name, content, postDate,isDiary)
 						// console.log(showComments)
 					}
 				} else {
@@ -277,10 +286,11 @@ function get_minds(isIndex){
 					}
 					comment();
 					$(".comment-list").click(function () {
+						// alert("asdfsdfsdaf");
 						$(this).siblings('ul').toggleClass("hidden");
 					})
 					$(".glyphicon-menu-down").click(function () {
-						alert('???');
+						// alert('???');
 						$(this).parent().children('ul').toggleClass('hidden');
 					})
 				}
@@ -320,16 +330,18 @@ function diaries(isIndex){
 						showNum = 3;
 					}
 					for (i = 0; i < showNum; i++) {
+						// new:dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name
 						// dia_id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
 						diaryId = data[i][0]
 						postDate = data[i][1]
 						title = data[i][2]
 						content = data[i][3]
 						commentNum = data[i][4]
+						category_name = data[i][7] //暂时先晾着
 						if(isIndex){
 							index_showDiary(title,postDate,content,commentNum,diaryId)
 						}else{
-							dia_showCutDiary(title,postDate,content,commentNum,diaryId)
+							dia_showCutDiary(title,postDate,content,commentNum,diaryId,category_name)
 						}
 						if (commentNum == 0) {
 							// 

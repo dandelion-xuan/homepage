@@ -125,7 +125,7 @@ $( function() {
     $('#diarySubmit').click(function(e){
         e.preventDefault();
         var title = $('#txtTitle').val()
-        var textArea = editor.txt.text()
+        var textArea = editor.txt.html()
         var category = $('input:radio:checked').val();
         var isNewCategory = new Boolean(false);
         if(category == addName){
