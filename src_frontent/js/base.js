@@ -132,8 +132,8 @@ function comment() {
 	// 点击写评论，返回mind or diary类型评论，mind_id or diary_id
 	var mindId = -1; 
 	var arr = [];//arr[1]为要的id
-	var isDiary = new Boolean(false)
-	var mindOrDiary = 'mind';
+	var isDiary = new Boolean()
+	var mindOrDiary = 'mindOrDiary';
 	$(".write-comment").click(function (e) {
 		e.preventDefault();
 		var parentId = $(this).parent().parent().attr('id');
@@ -143,6 +143,9 @@ function comment() {
 		if (arr[0] == 'diary') {
 			isDiary = true;
 			mindOrDiary = 'diary'
+		}else{
+			isDiary = false;
+			mindOrDiary = 'mind'
 		}
 	})
 	// 写评论接口
@@ -169,13 +172,6 @@ function comment() {
 						var commentNum = selector.val().split(/[()]/)[1];
 						// alert(commentNum)
 						commentNum++;
-						// var commentId, postDate, content, critic_name;
-						// commentId = data.comment[0][0];
-						// critic_name = data.comment[0][5];
-						// content = data.comment[0][2];
-						// postDate = data.comment[0][1];
-						// alert(commentNum)
-						// showComments(Id, commentId, critic_name, content, postDate)
 						selector.val("已评论(" + commentNum + ")")
 					} else {
 						alert('评论失败');
@@ -188,9 +184,11 @@ function comment() {
 		})
 	})
 
-	// 点击评论，获取mindID
+	// 点击评论，获取mindOrDiaryID
 	var clickedId = {};
+	// alert("liuweiming");
 	$('.get-comments').click(function (e) {
+		// alert("once hhhhhh")
 		e.preventDefault();
 		// clickNum++;
 		var parentId = $(this).parent().parent().attr('id');
@@ -199,6 +197,9 @@ function comment() {
 		if (arr[0] == 'diary') {
 			isDiary = true;
 			mindOrDiary = 'diary'
+		}else{
+			isDiary = false;
+			mindOrDiary = 'mind'
 		}
 		Id = arr[1];
 		if (Id in clickedId) {
@@ -238,6 +239,16 @@ function comment() {
 				console.log(data)
 			}
 		})
+	})
+
+	// 评论下拉/上收
+	$(".comment-list").click(function () {
+		// alert("asdfsdfsdaf");
+		$(this).siblings('ul').toggleClass("hidden");
+	})
+	$(".glyphicon-menu-down").click(function () {
+		// alert('???');
+		$(this).parent().children('ul').toggleClass('hidden');
 	})
 }
 
@@ -284,15 +295,6 @@ function get_minds(isIndex){
 							$('#mind_' + data[2][3]).append(seeMoreHtml)
 						}
 					}
-					comment();
-					$(".comment-list").click(function () {
-						// alert("asdfsdfsdaf");
-						$(this).siblings('ul').toggleClass("hidden");
-					})
-					$(".glyphicon-menu-down").click(function () {
-						// alert('???');
-						$(this).parent().children('ul').toggleClass('hidden');
-					})
 				}
 				// console.log(data)
 			}
@@ -338,10 +340,11 @@ function diaries(isIndex){
 						content = data[i][3]
 						commentNum = data[i][4]
 						category_name = data[i][7]
+						category_id = data[i][6]
 						if(isIndex){
 							index_showDiary(title,postDate,content,commentNum,diaryId)
 						}else{
-							dia_showCutDiary(title,postDate,content,commentNum,diaryId,category_name)
+							dia_showCutDiary(title,postDate,content,commentNum,diaryId,category_name,category_id)
 						}
 						if (commentNum == 0) {
 							// 
@@ -356,14 +359,6 @@ function diaries(isIndex){
 							console.log('#diary_' + data[2][0])
 						}
 					}
-					comment();
-
-					$(".comment-list").click(function () {
-						$(this).siblings('ul').toggleClass("hidden");
-					})
-					$(".glyphicon-menu-down").click(function () {
-						$(this).parent().children('ul').toggleClass('hidden');
-					})
 				}
 			}
 		},

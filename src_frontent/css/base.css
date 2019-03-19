@@ -216,6 +216,6 @@ a{
 	color: #58d231;
 }
 a:hover{
-	/*color: #5ac135;*/
-	color: #4b9e2e;
+  color: #4b9e2e;
+  cursor: pointer;
 }

@@ -1011,3 +1011,7 @@ pre {
 .col-md-8{
 	float: right;
 }
+.widget a {
+	font-weight: bold;
+	font-size: large;
+}

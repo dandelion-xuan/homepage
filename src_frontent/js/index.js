@@ -9,6 +9,11 @@ $(function () {
 
 get_minds(true);
 diaries(true);
+window.onload = function(){
+	comment();
+}
+
+
 
 function index_showDiary(title, postDate, content, commentNum, diaryId) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm')

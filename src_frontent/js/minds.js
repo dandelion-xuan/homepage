@@ -36,3 +36,7 @@ $(function(){
 });
 
 get_minds(false);
+window.onload = function(){
+    comment();
+}
+

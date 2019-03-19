@@ -39,14 +39,6 @@ $.ajax({
             category_name = data[0][7]
             dia_showFullDiary(title,postDate,content,diaryId,commentNum,category_name)
             comment();
-            $(".comment-list").click(function () {
-                // alert("asdfsdfsdaf");
-                $(this).siblings('ul').toggleClass("hidden");
-            })
-            $(".glyphicon-menu-down").click(function () {
-                alert('???');
-                $(this).parent().children('ul').toggleClass('hidden');
-            })
         }
     },
     error: function (data) {

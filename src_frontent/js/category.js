@@ -46,17 +46,52 @@ window.onload = function () {
             crossDomain: true,
             success: function (data) {
                 console.log(data)
-                if(data.length == 0){
+                if (data.length == 0) {
                     return;
                 }
-                for(var i = 0; i < data.length; i++){
+                for (var i = 0; i < data.length; i++) {
                     var diaryId = data[i][0];
                     var postDate = data[i][1];
                     var title = data[i][2];
                     var content = data[i][3];
                     var commentNum = data[i][4];
                     var category_name = data[i][5];
-                    dia_showCutDiary(title,postDate,content,commentNum,diaryId,category_name)
+                    dia_showCutDiary(title, postDate, content, commentNum, diaryId, category_name)
+                }
+            },
+            error: function (data) {
+                console.log("error:" + data)
+            }
+        })
+    })
+
+
+    $(".post-date a").click(function () {
+        $("#diaries").empty();
+        category_id = $(this).attr("class")
+        console.log("category_id:" + category_id);
+        $.ajax({
+            type: 'get',
+            datatype: 'json',
+            url: 'http://localhost:8888/get_category_diaries',
+            data: { category_id: category_id },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function (data) {
+                console.log(data)
+                if (data.length == 0) {
+                    return;
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var diaryId = data[i][0];
+                    var postDate = data[i][1];
+                    var title = data[i][2];
+                    var content = data[i][3];
+                    var commentNum = data[i][4];
+                    var category_name = data[i][5];
+                    dia_showCutDiary(title, postDate, content, commentNum, diaryId, category_name)
                 }
             },
             error: function (data) {
