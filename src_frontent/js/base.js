@@ -331,13 +331,13 @@ function diaries(isIndex){
 					}
 					for (i = 0; i < showNum; i++) {
 						// new:dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name
-						// dia_id,uploadDate,title,content,commentNum,user_id,category_id,tag_id
+						
 						diaryId = data[i][0]
 						postDate = data[i][1]
 						title = data[i][2]
 						content = data[i][3]
 						commentNum = data[i][4]
-						category_name = data[i][7] //暂时先晾着
+						category_name = data[i][7]
 						if(isIndex){
 							index_showDiary(title,postDate,content,commentNum,diaryId)
 						}else{

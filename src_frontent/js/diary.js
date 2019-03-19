@@ -1,6 +1,6 @@
 function dia_showFullDiary(title, postDate, content, diaryId,commentNum,category_name) {
     postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm')
-    var diaryCode = `<article class="post col-md-8" id="diary_` + diaryId + `">
+    var diaryCode = `<article class="post" id="diary_` + diaryId + `">
  <div class="post-head">
    <h1 class="post-title">` + title + `</h1>
    <div class="post-meta"><time class="post-date">`+ '类别：<a href="#">' + category_name + '</a> • ' + postDate + `</time></div>
