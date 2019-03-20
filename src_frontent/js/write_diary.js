@@ -7,7 +7,7 @@ $( function() {
     $.ajax({
         type:'get',
         dataType:'json',
-        url:'http://localhost:8888/get_categories',
+        url:'http://95.163.202.160:8888/get_categories',
         xhrFields: {
             withCredentials: true
         },
@@ -140,7 +140,7 @@ $( function() {
         $.ajax({
             type: "post",
             dataType: "json",
-            url: "http://localhost:8888/diary",
+            url: "http://95.163.202.160:8888/diary",
             xhrFields: {
                 withCredentials: true
             },

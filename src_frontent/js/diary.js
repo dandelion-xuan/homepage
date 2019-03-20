@@ -22,7 +22,7 @@ dia_id = window.location.search.split("=")[1];
 $.ajax({
     type: 'get',
     datatype: 'json',
-    url: 'http://localhost:8888/get_diary',
+    url: 'http://95.163.202.160:8888/get_diary',
     data: { dia_id: dia_id },
     xhrFields: {
         withCredentials: true

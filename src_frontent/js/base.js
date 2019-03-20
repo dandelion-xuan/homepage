@@ -157,7 +157,7 @@ function comment() {
 		$.ajax({
 			type: 'post',
 			datatype: 'json',
-			url: 'http://localhost:8888/' + mindOrDiary + '/write_comment',
+			url: 'http://95.163.202.160:8888/' + mindOrDiary + '/write_comment',
 			xhrFields: {
 				withCredentials: true
 			},
@@ -223,7 +223,7 @@ function comment() {
 		// console.log(mindId)
 		// 获取评论接口
 		$.ajax({
-			url: 'http://localhost:8888/' + mindOrDiary + '/get_comments',
+			url: 'http://95.163.202.160:8888/' + mindOrDiary + '/get_comments',
 			type: 'get',
 			datatype: 'json',
 			data: { Id: Id },
@@ -271,7 +271,7 @@ function get_minds(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
-		url: 'http://localhost:8888/get_minds',
+		url: 'http://95.163.202.160:8888/get_minds',
 		xhrFields: {
 			withCredentials: true
 		},
@@ -326,7 +326,7 @@ function diaries(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
-		url: 'http://localhost:8888/get_diaries',
+		url: 'http://95.163.202.160:8888/get_diaries',
 		xhrFields: {
 			withCredentials: true
 		},
@@ -386,7 +386,7 @@ function showUser() {
 	$.ajax({
 		type: "get",
 		dataType: "json",
-		url: "http://localhost:8888/user",
+		url: "http://95.163.202.160:8888/user",
 		xhrFields: {
 			withCredentials: true
 		},

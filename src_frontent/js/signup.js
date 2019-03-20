@@ -51,7 +51,7 @@ $(function(){
   //发送ajax请求 使用post方式发送json字符串给后台login
   $.ajax({
       type: "post",
-      url: "http://localhost:8888/signup",
+      url: "http://95.163.202.160:8888/signup",
       xhrFields: {
           withCredentials: true
       },

@@ -7,7 +7,7 @@ $(function(){
         $.ajax({
             type: "post",
             dataType: "json",
-            url: "http://localhost:8888/mind",
+            url: "http://95.163.202.160:8888/mind",
             xhrFields: {
                 withCredentials: true
             },
