@@ -93,35 +93,35 @@ function showMind(content, uploadDate, commentNum, mindId) {
 		'	<span class="glyphicon glyphicon-menu-down get-comments"></span>' +
 		'</input>' +
 		'<input type="button" id="write_comment_btn" class="comment-btn write-comment" value="写评论" data-toggle="modal" data-target="#write-comment-form"></input>' +
-		'</div>' +
+		'<ul class="media-list hidden"></ul>'
+	'</div>' +
 		'</div>'
 	// needs args:critic_id,comment content,comment_id
 
 	$('#minds').append(mindCode)
 }
 
-function showComments(mindID, comment_id, critic_username, content, postDate,isDiary) {
+function showComments(mindID, comment_id, critic_username, content, postDate, isDiary, index) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
-	var commentHtml = '<ul class="media-list">' +
-		'<li class="media" id="' + comment_id + '>' +
-		'<div class="media-left">' +
-		'<a href="#">' +
-		'<img class="media-object" src="images/01.jpg" alt="lixuan_zhu">' +
-		'</a>' +
-		'</div>' +
-		'<div class="media-body">' +
-		'<h4 class="media-heading"><a href="#">' + critic_username + '</a></h4>' +
-		'<p>' + content + '</p>' +
-		'<span class="post-date">' + postDate + '</span>' +
-		'</div>' +
-		'</li>' +
-		'</ul>'
-	if(isDiary){
-		$('#diary_' + mindID + ' .comment').append(commentHtml)
-	}else{
-		$('#mind_' + mindID + ' .comment').append(commentHtml)
+	var commentHtml = `
+	<li class="media" id="`+ comment_id + `">
+	  <div class="media-left">
+		<a href="#">
+		  <img class="media-object" src="images/01.jpg" alt="lixuan_zhu">
+		</a>
+	  </div>
+	  <div class="media-body">
+		<h4 class="media-heading"><a href="#">`+ critic_username + `</a><span class="lou">   #` + index + `楼</span></h4>
+		<p>`+ content + `</p>
+		<span class="post-date">`+ postDate + `</span>
+	  </div>
+	</li>`
+	if (isDiary) {
+		$('#diary_' + mindID + ' .media-list').append(commentHtml)
+	} else {
+		$('#mind_' + mindID + ' .media-list').append(commentHtml)
 	}
-		
+
 }
 
 /**
@@ -130,7 +130,7 @@ function showComments(mindID, comment_id, critic_username, content, postDate,isD
 // get and write comments and show
 function comment() {
 	// 点击写评论，返回mind or diary类型评论，mind_id or diary_id
-	var mindId = -1; 
+	var mindId = -1;
 	var arr = [];//arr[1]为要的id
 	var isDiary = new Boolean()
 	var mindOrDiary = 'mindOrDiary';
@@ -143,7 +143,7 @@ function comment() {
 		if (arr[0] == 'diary') {
 			isDiary = true;
 			mindOrDiary = 'diary'
-		}else{
+		} else {
 			isDiary = false;
 			mindOrDiary = 'mind'
 		}
@@ -167,12 +167,26 @@ function comment() {
 				if (data) {
 					if (data.errorcode == 0) {
 						alert('评论成功');
-						var selector = $('#'+mindOrDiary + '_'+Id+' .get-comments');
+						var selector = $('#' + mindOrDiary + '_' + Id + ' .get-comments');
 						// alert(selector.val())
 						var commentNum = selector.val().split(/[()]/)[1];
 						// alert(commentNum)
 						commentNum++;
 						selector.val("已评论(" + commentNum + ")")
+						// 返回：commentID,postdate,content,mindID,critic_id,critic_username
+						/**
+						 * 写完评论展示在ul上部分
+						 * 						var comment = data.comment[0].slice()
+						console.log("new comment：" + comment)
+						var commentId = comment[0];
+						var postDate = comment[1];
+						var content = comment[2];
+						var mindOrDiaId = comment[3];
+						var critic_id = comment[4];
+						var critic_username = comment[5];
+						showComments(mindOrDiaId, commentId, critic_username, content, postDate,isDiary)
+						 */
+
 					} else {
 						alert('评论失败');
 					}
@@ -197,7 +211,7 @@ function comment() {
 		if (arr[0] == 'diary') {
 			isDiary = true;
 			mindOrDiary = 'diary'
-		}else{
+		} else {
 			isDiary = false;
 			mindOrDiary = 'mind'
 		}
@@ -228,7 +242,7 @@ function comment() {
 						postDate = data[i][1];
 						console.log("data: " + data[i])
 						// commentNum, comment_id, critic_username, content,postDate
-						showComments(Id, commentId, critic_name, content, postDate,isDiary)
+						showComments(Id, commentId, critic_name, content, postDate, isDiary, i + 1)
 						// console.log(showComments)
 					}
 				} else {
@@ -253,7 +267,7 @@ function comment() {
 }
 
 // get_minds and show
-function get_minds(isIndex){
+function get_minds(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
@@ -270,24 +284,24 @@ function get_minds(isIndex){
 				var userId;
 				if (data.length == 0) {
 					$('#outline .mind').css('background-color', 'none')
-					$('.comment').css('visibility', 'hidden')
+					// $('.comment').css('visibility', 'hidden')
 				} else {
 					var showNum = data.length;
-					if(isIndex){
+					if (isIndex) {
 						showNum = 3;
 					}
 					for (i = 0; i < showNum; i++) {
 						// content, uploadDate, commentNum, mindID
-						content = data[i][0]
-						uploadDate = data[i][1]
-						commentNum = data[i][2]
-						mindId = data[i][3]
+						content = data[i][0];
+						uploadDate = data[i][1];
+						commentNum = data[i][2];
+						mindId = data[i][3];
 						showMind(content, uploadDate, commentNum, mindId)
 						if (commentNum == 0) {
 							// 
 						}
 					}
-					if(isIndex){
+					if (isIndex) {
 						if (data.length <= 3) {
 							$('.see-more').css('visibility', 'hidden')
 						} else {
@@ -308,7 +322,7 @@ function get_minds(isIndex){
 
 
 // get_diaries
-function diaries(isIndex){
+function diaries(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
@@ -325,15 +339,15 @@ function diaries(isIndex){
 				var userId;
 				if (data.length == 0) {
 					$('#outline .diary').css('background-color', 'none')
-					$('.comment').css('visibility', 'hidden')
+					// $('.comment').css('visibility', 'hidden')
 				} else {
 					var showNum = data.length;
-					if(isIndex){
+					if (isIndex) {
 						showNum = 3;
 					}
 					for (i = 0; i < showNum; i++) {
 						// new:dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name
-						
+
 						diaryId = data[i][0]
 						postDate = data[i][1]
 						title = data[i][2]
@@ -341,16 +355,16 @@ function diaries(isIndex){
 						commentNum = data[i][4]
 						category_name = data[i][7]
 						category_id = data[i][6]
-						if(isIndex){
-							index_showDiary(title,postDate,content,commentNum,diaryId)
-						}else{
-							dia_showCutDiary(title,postDate,content,commentNum,diaryId,category_name,category_id)
+						if (isIndex) {
+							index_showDiary(title, postDate, content, commentNum, diaryId)
+						} else {
+							dia_showCutDiary(title, postDate, content, commentNum, diaryId, category_name, category_id)
 						}
 						if (commentNum == 0) {
 							// 
 						}
 					}
-					if(isIndex){
+					if (isIndex) {
 						if (data.length <= 3) {
 							$('.see-more').css('visibility', 'hidden')
 						} else {
@@ -367,3 +381,25 @@ function diaries(isIndex){
 		}
 	})
 }
+
+function showUser() {
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		url: "http://localhost:8888/user",
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function (data) {
+			$("#username").html(data);
+		 console.log("username:" + data)
+		},
+		error: function (data) { console.log("error:" + data)}
+	})
+}
+
+
+	$(".portrait img").click(function(e){
+		window.location.href = "/"
+	})

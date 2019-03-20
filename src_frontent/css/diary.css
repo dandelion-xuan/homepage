@@ -1,0 +1,11 @@
+/* diary.html部分 */
+div#diary {
+	margin: 5px 100px;
+}
+.post-head {
+    margin-top: 20px;
+    font-size: large;
+}
+.post .post-content {
+    margin: 0px 50px;
+}

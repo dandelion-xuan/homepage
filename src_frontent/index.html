@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
 	<title>PageHome</title>
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/lib/jquery-fab-master/dist/css/jquery-fab.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
+
 <body style="position: relative;" data-spy="scroll" data-target="#nav-bar" data-offset="0">
+		
 	<header id="header">
 		<div class="left">
 			<div class="portrait">
+				<!-- <a href="/html/setting.html"><img src="images/01.jpg" alt="lixuan" class="img-circle"></a> -->
 				<img src="images/01.jpg" alt="lixuan" class="img-circle">
 				<div class="popover fade bottom in hidden">
 					<div class="arrow" style="left: 50%;"></div>
 					<div class="popover-content">
-						<span>个人设置</span>
+						<a href="/html/setting.html" class="userAttr">个人设置</a>
+						<a href="/html/login.html" class="userAttr">切换账号</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="middle">
-			<span>爱&主旋律</span>
+			<span id="username"></span>
 			<span class="emotion icon-grin">
 				<div class="popover fade right in hidden">
 					<div class="arrow" style="top: 50%;"></div>
@@ -36,82 +43,86 @@
 					</div>
 				</div>
 			</span>
-			
+
 			<p class="signature">你站在桥上看风景，看风景的人在楼上看你。明月装饰了你的窗子，你装饰了别人的梦</p>
 		</div>
 		<div class="right"><img src="images/loverhome.png"></div>
-		
+
 		<!-- <font color="#FF2800">L</font><font color="#FF5000">o</font><font color="#FF7800">v</font><font color="#FFA000">e</font><font color="#FFC800">r</font><font color="#FFF000">-</font><font color="#D7FF00">H</font><font color="#AFFF00">o</font><font color="#87FF00">m</font><font color="#5FFF00">e</font> -->
 	</header>
 	<section>
 		<div id="nav-bar" class="col-md-2" data-spy="affix">
 			<ul class="nav nav-pills nav-stacked" role="tablist">
-			  <li role="presentation">
-			  	<a href="#minds">片语</a>
-			  </li>
-			  <li role="presentation">
-			  	<a href="#diaries">日记</a>
-			  </li>
-			  <li role="presentation">
-			  	<a href="#album">相册</a>
-			  </li>
+				<li role="presentation">
+					<a href="#minds">片语</a>
+				</li>
+				<li role="presentation">
+					<a href="#diaries">日记</a>
+				</li>
+				<li role="presentation">
+					<a href="#album">相册</a>
+				</li>
 			</ul>
 		</div>
 		<div id="outline" class="col-md-9">
-				<div id="minds">
-					<blockquote>
-					  <p>最新片语</p>
-					</blockquote>	
-				</div>
-				<div id="diaries">
-					<blockquote>
-					  <p>最新日记</p>
-					</blockquote>
-				</div>
-				<div id="album">
-					<blockquote>
-					  <p>最新相片</p>
-					</blockquote>
-					<div class="container album">
-						<img src="images/01.jpg" alt="01.jpg" class="img-thumbnail">
-						<img src="images/02.jpg" alt="02.jpg" class="img-thumbnail">
-						<img src="images/03.jpg" alt="03.jpg" class="img-thumbnail">
-						<img src="images/04.jpg" alt="04.jpg" class="img-thumbnail">
-						<img src="images/05.jpg" alt="05.jpg" class="img-thumbnail">
-						<img src="images/06.jpg" alt="06.jpg" class="img-thumbnail">
-						<img src="images/07.jpg" alt="07.jpg" class="img-thumbnail">
-						<img src="images/08.jpg" alt="08.jpg" class="img-thumbnail">
-						<img src="images/09.jpg" alt="09.jpg" class="img-thumbnail">
-						<img src="images/10.jpg" alt="10.jpg" class="img-thumbnail">
-						<img src="images/08.jpg" alt="08.jpg" class="img-thumbnail">
-						<img src="images/09.jpg" alt="09.jpg" class="img-thumbnail">
-						<img src="images/10.jpg" alt="10.jpg" class="img-thumbnail">
+			<div id="minds">
+				<blockquote>
+					<p>最新片语</p>
+				</blockquote>
+			</div>
+			<div id="diaries">
+				<blockquote>
+					<p>最新日记</p>
+				</blockquote>
+			</div>
+			<div id="album">
+				<blockquote>
+					<p>最新相片</p>
+				</blockquote>
+				<div class="container album">
+					<img src="images/01.jpg" alt="01.jpg" class="img-thumbnail">
+					<img src="images/02.jpg" alt="02.jpg" class="img-thumbnail">
+					<img src="images/03.jpg" alt="03.jpg" class="img-thumbnail">
+					<img src="images/04.jpg" alt="04.jpg" class="img-thumbnail">
+					<img src="images/05.jpg" alt="05.jpg" class="img-thumbnail">
+					<img src="images/06.jpg" alt="06.jpg" class="img-thumbnail">
+					<img src="images/07.jpg" alt="07.jpg" class="img-thumbnail">
+					<img src="images/08.jpg" alt="08.jpg" class="img-thumbnail">
+					<img src="images/09.jpg" alt="09.jpg" class="img-thumbnail">
+					<img src="images/10.jpg" alt="10.jpg" class="img-thumbnail">
+					<img src="images/08.jpg" alt="08.jpg" class="img-thumbnail">
+					<img src="images/09.jpg" alt="09.jpg" class="img-thumbnail">
+					<img src="images/10.jpg" alt="10.jpg" class="img-thumbnail">
 					<p class="see-more"><a href="#">查看更多>>></a></p>
-					</div>
 				</div>
+			</div>
 		</div>
 	</section>
+	<div id="wrapper"></div>
 	<!-- 写评论模态框 -->
-  <div class="modal fade" id="write-comment-form" tabindex="-1" role="dialog" aria-labelledby="login_form_title">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="login_form_title">写评论</h4>
-        </div>
-        <div class="modal-body">
-        	<textarea id="txt" cols="68" rows="5" autofocus></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveComment">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="modal fade" id="write-comment-form" tabindex="-1" role="dialog" aria-labelledby="login_form_title">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="login_form_title">写评论</h4>
+				</div>
+				<div class="modal-body">
+					<textarea id="txt" cols="68" rows="5" autofocus></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="saveComment">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="lib/jquery/jquery.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="lib/jquery-fab-master/dist/js/jquery-fab.min.js"></script>
 	<script src="js/base.js"></script>
 	<script src="js/index.js"></script>
 </body>
+
 </html>

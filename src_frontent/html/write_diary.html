@@ -7,8 +7,8 @@
 	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
 	<title>Write_Diaries</title>
 	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../lib/jquery/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+	<link rel="stylesheet" href="../lib/jquery/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<link rel="stylesheet" type="text/css" href="../css/write_diary.css">
 </head>
@@ -21,13 +21,14 @@
 				<div class="popover fade bottom in hidden">
 					<div class="arrow" style="left: 50%;"></div>
 					<div class="popover-content">
-						<span>个人设置</span>
+						<a href="/html/setting.html" class="userAttr">个人设置</a>
+						<a href="/html/login.html" class="userAttr">切换账号</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="middle">
-			<span>爱&主旋律</span>
+			<span id="username"></span>
 			<span class="emotion icon-grin">
 				<div class="popover fade right in hidden">
 					<div class="arrow" style="top: 50%;"></div>
@@ -59,14 +60,14 @@
 				</div>
 				<!-- 分类部分 -->
 				<div id="categoryForm">
-					<label class="labTitle col-md-2">个人分类：</label>
-					<div class="txt-box col-md-10">
+					<label class="labTitle col-md-1">个人分类：</label>
+					<div class="txt-box col-md-11">
 						<button class="btn-add-tag" id="add-new-catogory">
-							<i class="icon-plus"></i>  添加新分类
+							<i class="icon-plus"></i> 添加新分类
 						</button>
 						<div class="categorie-list">
-							<input type="radio" value="default" class="cbox" name="cbox" checked="checked">
-							<label>Default</label>
+							<!-- <input type="radio" value="default" class="cbox" name="cbox" checked="checked">
+							<label>Default</label> -->
 						</div>
 					</div>
 				</div>
@@ -86,9 +87,9 @@
 		</form>
 		<p class="validateTips">All form fields are required.</p>
 	</div>
-	<p class="qwe">sdfsdfsdfsdf</p>
+	<div class="backHome"><a href="/"><img src="../images/return.svg" alt="back-home-pic"></a></div>
 	<script src="../lib/jquery/jquery.js"></script>
-    <script src="../lib/jquery/jquery-ui.js"></script>
+	<script src="../lib/jquery/jquery-ui.js"></script>
 	<script src="../lib/validate/jquery.validate.js"></script>
 	<script src="../lib/validate/messages_zh.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.js"></script>

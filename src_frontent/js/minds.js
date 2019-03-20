@@ -3,7 +3,7 @@ $(function(){
     $('#mindSubmit').click(function(e){
         e.preventDefault();
         var textArea = $('#sendMind').val();
-        alert(textArea)
+        // alert(textArea)
         $.ajax({
             type: "post",
             dataType: "json",
@@ -16,10 +16,10 @@ $(function(){
             success: function(data){
                 if(data){
                     if(data.errorcode==1){
-                     alert('写入失败');
+                     alert('发表失败');
                      // mailError()
                     }else if(data.errorcode == 0){
-                        alert('写入成功');
+                        alert('发表成功');
                         window.location.reload()
                      //    pwdSuccess()
                     //  window.location.href="/";
@@ -34,7 +34,7 @@ $(function(){
 
 	
 });
-
+showUser()
 get_minds(false);
 window.onload = function(){
     comment();

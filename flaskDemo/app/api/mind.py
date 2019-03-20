@@ -3,9 +3,6 @@ from flask import jsonify,send_file
 from flask import request,session
 from models import database
 
-
-
-
 @app.route('/mind', methods=['POST', 'GET'])
 def  mind():
 	uID = session.get('user_id')

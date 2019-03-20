@@ -5,16 +5,35 @@
   <meta charset="UTF-8">
   <title>demo</title>
   <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../lib/jquery-fab-master/dist/css/jquery-fab.css">
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-  <div class="hh">
-    <p>嘻嘻嘻嘻</p>
-  
-  </div>
+
+
+  <div id="wrapper" class="jfab_wrapper">
+    <div class="jfab_btns_wrapper" style="display: none;">
+      <div><button data-link-href="http://www.example.com" data-link-target="_blank" class="sub_fab_btn"
+          style="background-color:#f1c40f;"><span style="color:fffff;"><i class="fa fa-pencil"></i></span></button>
+      </div>
+      <div><button data-link-href="http://www.example.com" data-link-target="" class="sub_fab_btn"
+          style="background-color:#2ecc71;"><span style="color:#fffff;"><i class="fa fa-comment"></i></span></button>
+      </div>
+      <div><button data-link-href="#anchor" data-link-target="" class="sub_fab_btn"
+          style="background-color:#e74c3c;"><span style="color:#fffff;">A</span></button></div>
+    </div><button data-link-href="" data-link-target="" '="" class="jfab_main_btn" style="background-color:#2980b9;"><span style=""><i class="fa fa-plus"></i></span></button></div>
+
+
+  <div id="wrapper"></div>
+  <div><label for="password">密码：</label><input type="password" id="password"></div>
+  <div><input type="checkbox" id="togglePassword"><label for="togglePassword">显示密码</label></div>
   <script src="../lib/jquery/jquery.js"></script>
+  <!-- <script src="../lib/hideShowPassword-master/hideShowPassword.min.js"></script> -->
+  <script src="../lib/pwd/js/jquery.toggle-password.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
+  <script src="../lib/jquery-fab-master/dist/js/jquery-fab.min.js"></script>
+  <script src="../lib/jquery-fab-master/dist/js/jquery-fab.js"></script>
   <script src="1.js"></script>
   <script src="main.js"></script>
 </body>

@@ -16,6 +16,7 @@ function dia_showCutDiary(title, postDate, content, commentNum, diaryId, categor
 `
   $('#diaries').append(diaryCode)
 }
+showUser()
 diaries(false);
 
 

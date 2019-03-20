@@ -23,7 +23,7 @@ def  write_comment(mindOrDiary):
 	'''
 	if(result is ()):
 		# print ("hhh")
-		# commentId = database.Database.get_last_insert_id()
+		commentId = database.Database.get_last_insert_id()
 		addCommentNumSql = "update %s set commentNum = commentNum + 1 where ID = '%s'" % (mindOrDiary,Id)
 		if(database.Database.execute(addCommentNumSql) is not ()):
 			data = {
@@ -32,14 +32,14 @@ def  write_comment(mindOrDiary):
 				'errorcode':2
 			}
 		else:
-			# if(mindOrDiary == 'mind'):
-			# 	comment = database.Database.execute("select * from mind_comment where ID = '%s'" % (commentId))
-			# else:
-			# 	comment = database.Database.execute("select * from dia_comment where ID = '%s'" % (commentId))
-			# print("new comment:")
-			# print(comment)
+			if(mindOrDiary == 'mind'):
+				comment = database.Database.execute("select * from mind_comment where ID = '%s'" % (commentId))
+			else:
+				comment = database.Database.execute("select * from dia_comment where ID = '%s'" % (commentId))
+			print("new comment:")
+			print(comment)
 			data = {
-				# 'comment':comment,
+				'comment':comment,
 				'message':'success',
 				'errorcode':0
 			}

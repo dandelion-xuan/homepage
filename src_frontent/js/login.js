@@ -27,7 +27,10 @@ $(function(){
 		// console.log($('#inputError2Status').siblings('span'));
 	}
 	// pwdSuccess();
-
+	$('#password').togglePassword({
+		el: '#togglePassword'
+});
+showUser()
 	$("#loginSubmit").click(function(e){
 		e.preventDefault();
 		var email=$('#email').val();
@@ -50,8 +53,7 @@ $(function(){
 					// mailError()
 				   }else if(data.errorcode == 0){
 					   alert('login成功');
-					//    pwdSuccess()
-					// window.location.href="/";
+					window.location.href="/";
 				   }
 				 	else{
 					alert('密码错误')

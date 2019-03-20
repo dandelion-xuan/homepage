@@ -12,11 +12,12 @@ function dia_showFullDiary(title, postDate, content, diaryId,commentNum,category
      <span class="glyphicon glyphicon-menu-down"></span>
  </input>
  <input type="button" class="comment-btn write-comment" value="写评论" data-toggle="modal" data-target="#write-comment-form"></input>
+ <ul class="media-list hidden"></ul>
 </div>
 </article>`
     $('#diary').append(diaryCode)
 }
-
+showUser()
 dia_id = window.location.search.split("=")[1];
 $.ajax({
     type: 'get',

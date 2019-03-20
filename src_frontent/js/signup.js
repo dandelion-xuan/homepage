@@ -1,8 +1,8 @@
-$.validator.setDefaults({
-  submitHandler: function() {
-    alert("提交事件!");
-  }
-});
+// $.validator.setDefaults({
+//   submitHandler: function() {
+//     alert("提交事件!");
+//   }
+// });
 $(function(){
   $("#signupForm").validate({
     rules: {
@@ -42,7 +42,8 @@ $(function(){
     }
   });
 
-  $("#signupSubmit").click(function(){
+  $("#signupSubmit").click(function(e){
+    e.preventDefault();
   var username=$('#username').val();
   var email=$('#email').val();
   var password=$('#password').val();
@@ -65,7 +66,7 @@ $(function(){
                  // window.location.href="login";
              }else if(data.errorcode == 0){
                  alert('注册成功');
-                //  window.location.href="/";
+                 window.location.href="/";
              }
            else{
               alert('插入失败')

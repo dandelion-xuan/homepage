@@ -1,5 +1,5 @@
 from api import signup
-from api import login,mind,diary,comment,category
+from api import login,mind,diary,comment,category,user
 from server.server import app
 
 

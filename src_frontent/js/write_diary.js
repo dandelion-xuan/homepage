@@ -1,4 +1,5 @@
 $( function() {
+    showUser()
     /**
      * 获得用户已有的分类
      */
@@ -127,6 +128,11 @@ $( function() {
         var title = $('#txtTitle').val()
         var textArea = editor.txt.html()
         var category = $('input:radio:checked').val();
+        console.log("category:"+category)
+        if(typeof category == "undefined" || category == null || category == "" || category.trim() == ""){
+            alert("先添加类名");
+            return;
+        }
         var isNewCategory = new Boolean(false);
         if(category == addName){
             isNewCategory = true;
@@ -143,9 +149,12 @@ $( function() {
             success: function(data){
                 if(data){
                     if(data.errorcode==0){
-                     alert('写入成功');
+                     alert('发表成功');
+                     var diaryId = data.diaryId;
+                     console.log("newDiaryId:" + diaryId)
+                     window.location.href = "/html/diary.html?diary=" + diaryId;
                     }else if(data.errorcode == 1){
-                        alert('写入失败');
+                        alert('发表失败');
                     }else if(data.errorcode == 2){
                         alert("添加分类失败")
                     }else{
