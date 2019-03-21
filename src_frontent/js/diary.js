@@ -39,7 +39,7 @@ $.ajax({
             commentNum = data[0][4]
             category_name = data[0][7]
             dia_showFullDiary(title,postDate,content,diaryId,commentNum,category_name)
-            comment();
+            comment(false);
         }
     },
     error: function (data) {

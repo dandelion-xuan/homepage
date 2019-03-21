@@ -11,7 +11,7 @@ get_minds(true);
 diaries(true);
 
 window.onload = function(){
-	comment()
+	comment(true)
 }
 
 

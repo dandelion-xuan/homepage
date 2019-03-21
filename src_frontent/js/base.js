@@ -60,7 +60,7 @@ $(function () {
 // 日期时间格式化
 function dateFormat(date, format) {
 	date = new Date(date);
-	date.setHours(date.getHours() - 8);
+	date.setHours(date.getHours());
 	var o = {
 		'M+': date.getMonth() + 1, //month
 		'd+': date.getDate(), //day
@@ -101,13 +101,18 @@ function showMind(content, uploadDate, commentNum, mindId) {
 	$('#minds').append(mindCode)
 }
 
-function showComments(mindID, comment_id, critic_username, content, postDate, isDiary, index) {
+function showComments(mindID, comment_id, critic_username, content, postDate, isDiary, index,isIndex) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
+	if(isIndex){
+		src = "images/01.jpg";
+	}else{
+		src = "../images/01.jpg"
+	}
 	var commentHtml = `
 	<li class="media" id="`+ comment_id + `">
 	  <div class="media-left">
 		<a href="#">
-		  <img class="media-object" src="images/01.jpg" alt="lixuan_zhu">
+		  <img class="media-object" src=`+src+` alt="lixuan_zhu">
 		</a>
 	  </div>
 	  <div class="media-body">
@@ -128,17 +133,19 @@ function showComments(mindID, comment_id, critic_username, content, postDate, is
  * 接口请求
  */
 // get and write comments and show
-function comment() {
+function comment(isIndex) {
 	// 点击写评论，返回mind or diary类型评论，mind_id or diary_id
 	var mindId = -1;
 	var arr = [];//arr[1]为要的id
 	var isDiary = new Boolean()
 	var mindOrDiary = 'mindOrDiary';
 	$(".write-comment").click(function (e) {
+		// alert("hhhh")
 		e.preventDefault();
 		var parentId = $(this).parent().parent().attr('id');
-		// console.log(parentId)
+		console.log(parentId)
 		arr = parentId.split('_');
+		console.log("arr:" + arr)
 		Id = arr[1];
 		if (arr[0] == 'diary') {
 			isDiary = true;
@@ -242,7 +249,7 @@ function comment() {
 						postDate = data[i][1];
 						console.log("data: " + data[i])
 						// commentNum, comment_id, critic_username, content,postDate
-						showComments(Id, commentId, critic_name, content, postDate, isDiary, i + 1)
+						showComments(Id, commentId, critic_name, content, postDate, isDiary, i + 1,isIndex)
 						// console.log(showComments)
 					}
 				} else {

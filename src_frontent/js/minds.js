@@ -37,6 +37,6 @@ $(function(){
 showUser()
 get_minds(false);
 window.onload = function(){
-    comment();
+    comment(false);
 }
 

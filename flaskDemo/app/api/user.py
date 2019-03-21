@@ -14,11 +14,11 @@ def userModify():
 	print(newPwd)
 	if not newUsername.strip():
 		print("---用户名为空，修改密码---")
-		res = database.Database.execute("SELECT * from user WHERE ID = %d AND password = '%s';" % (int(uID),oldPwd))
+		res = database.Database.execute("SELECT * from user WHERE ID = '%s' AND password = '%s';" % (uID,oldPwd))
 		print(res)
 		if res:
 			# True oldPwd
-			result = database.Database.execute("UPDATE user SET password='%s' WHERE ID = %d;" % (newPwd,int(uID)))
+			result = database.Database.execute("UPDATE user SET password='%s' WHERE ID = '%s';" % (newPwd,uID))
 			print(result)
 			if(result is ()):
 				data = {
@@ -38,7 +38,7 @@ def userModify():
 
 	else:
 		print("---修改用户名---")
-		result = database.Database.execute("UPDATE user SET username='%s' WHERE ID = %d;" % (newUsername,int(uID)))
+		result = database.Database.execute("UPDATE user SET username='%s' WHERE ID = '%s';" % (newUsername,uID))
 		print(result)
 		if(result is ()):
 			data = {
@@ -55,6 +55,6 @@ def userModify():
 @app.route("/user",methods=['POST','GET'])
 def user():
 	uID = session.get('user_id')
-	username = database.Database.execute("select username from user where ID = %d" % (int(uID)))
+	username = database.Database.execute("select username from user where ID = '%s'" % (uID))
 	print(username)
 	return jsonify(username)
