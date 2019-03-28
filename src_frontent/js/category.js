@@ -7,7 +7,7 @@ function showCategory(category_id, category_name, diaNum) {
 $.ajax({
     type: 'get',
     datatype: 'json',
-    url: 'http://95.163.202.160:8888/get_categoryList',
+    url: host + 'get_categoryList',
     xhrFields: {
         withCredentials: true
     },
@@ -38,7 +38,7 @@ window.onload = function () {
         $.ajax({
             type: 'get',
             datatype: 'json',
-            url: 'http://95.163.202.160:8888/get_category_diaries',
+            url: host + 'get_category_diaries',
             data: { category_id: category_id },
             xhrFields: {
                 withCredentials: true
@@ -73,7 +73,7 @@ window.onload = function () {
         $.ajax({
             type: 'get',
             datatype: 'json',
-            url: 'http://95.163.202.160:8888/get_category_diaries',
+            url: host + 'get_category_diaries',
             data: { category_id: category_id },
             xhrFields: {
                 withCredentials: true

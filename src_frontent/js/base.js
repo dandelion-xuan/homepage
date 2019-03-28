@@ -1,4 +1,4 @@
-
+var host = 'http://95.163.202.160:8888/'
 $(function () {
 	/**
 	 * 评论
@@ -101,18 +101,18 @@ function showMind(content, uploadDate, commentNum, mindId) {
 	$('#minds').append(mindCode)
 }
 
-function showComments(mindID, comment_id, critic_username, content, postDate, isDiary, index,isIndex) {
+function showComments(mindID, comment_id, critic_username, content, postDate, isDiary, index, isIndex) {
 	postDate = dateFormat(postDate, 'yyyy-MM-dd HH:mm');
-	if(isIndex){
+	if (isIndex) {
 		src = "images/01.jpg";
-	}else{
+	} else {
 		src = "../images/01.jpg"
 	}
 	var commentHtml = `
 	<li class="media" id="`+ comment_id + `">
 	  <div class="media-left">
 		<a href="#">
-		  <img class="media-object" src=`+src+` alt="lixuan_zhu">
+		  <img class="media-object" src=`+ src + ` alt="lixuan_zhu">
 		</a>
 	  </div>
 	  <div class="media-body">
@@ -164,7 +164,7 @@ function comment(isIndex) {
 		$.ajax({
 			type: 'post',
 			datatype: 'json',
-			url: 'http://95.163.202.160:8888/' + mindOrDiary + '/write_comment',
+			url: host + mindOrDiary + '/write_comment',
 			xhrFields: {
 				withCredentials: true
 			},
@@ -230,7 +230,7 @@ function comment(isIndex) {
 		// console.log(mindId)
 		// 获取评论接口
 		$.ajax({
-			url: 'http://95.163.202.160:8888/' + mindOrDiary + '/get_comments',
+			url: host + mindOrDiary + '/get_comments',
 			type: 'get',
 			datatype: 'json',
 			data: { Id: Id },
@@ -249,7 +249,7 @@ function comment(isIndex) {
 						postDate = data[i][1];
 						console.log("data: " + data[i])
 						// commentNum, comment_id, critic_username, content,postDate
-						showComments(Id, commentId, critic_name, content, postDate, isDiary, i + 1,isIndex)
+						showComments(Id, commentId, critic_name, content, postDate, isDiary, i + 1, isIndex)
 						// console.log(showComments)
 					}
 				} else {
@@ -278,7 +278,7 @@ function get_minds(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
-		url: 'http://95.163.202.160:8888/get_minds',
+		url: host + 'get_minds',
 		xhrFields: {
 			withCredentials: true
 		},
@@ -333,7 +333,7 @@ function diaries(isIndex) {
 	$.ajax({
 		type: 'get',
 		datatype: 'json',
-		url: 'http://95.163.202.160:8888/get_diaries',
+		url: host + 'get_diaries',
 		xhrFields: {
 			withCredentials: true
 		},
@@ -393,20 +393,20 @@ function showUser() {
 	$.ajax({
 		type: "get",
 		dataType: "json",
-		url: "http://95.163.202.160:8888/user",
+		url: host + "user",
 		xhrFields: {
 			withCredentials: true
 		},
 		crossDomain: true,
 		success: function (data) {
 			$("#username").html(data);
-		 console.log("username:" + data)
+			console.log("username:" + data)
 		},
-		error: function (data) { console.log("error:" + data)}
+		error: function (data) { console.log("error:" + data) }
 	})
 }
 
 
-	$(".portrait img").click(function(e){
-		window.location.href = "/"
-	})
+$(".portrait img").click(function (e) {
+	window.location.href = "/"
+})

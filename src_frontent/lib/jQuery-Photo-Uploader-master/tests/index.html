@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/dist/PhotoUploader.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="photo-upload">
+        </div>
+        <h1>Last Captured Image: </h1>
+        <img src="lastImage.png" />
+        <br/>
+        <br/>
+        <button  style="btn btn-primary" id="get-photo">Get Photo</button>
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/dist/PhotoUploader.js"></script>
+        <script>
+         window.PhotoUploaderExample = {};
+            window.PhotoUploaderExample.uploader =  $("#photo-upload").PhotoUploader({
+                url: "/tests/photo.php",
+                photoHeight: 400,
+                photoWidth: 400,
+                done: function(d){
+                    console.log(d);
+                    window.location.reload();
+                }
+            });
+
+            $("#get-photo").click(function(){
+                window.PhotoUploaderExample.uploader.show();
+            })
+        </script>
+    </body>
+</html>

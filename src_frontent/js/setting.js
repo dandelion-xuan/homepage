@@ -32,7 +32,7 @@ $("#changeUsernameForm .btn-yes").click(function(e){
         // console.log(newUsername)
         $.ajax({
             type: "post",
-			url: "http://95.163.202.160:8888/userModify",
+			url: host + "userModify",
             xhrFields: {
                 withCredentials: true
 			},
@@ -66,7 +66,7 @@ $("#changePwdForm .btn-yes").click(function(e){
         // console.log(newPwd)
         $.ajax({
             type: "post",
-			url: "http://95.163.202.160:8888/userModify",
+			url: host + "userModify",
             xhrFields: {
                 withCredentials: true
 			},

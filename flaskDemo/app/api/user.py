@@ -55,6 +55,9 @@ def userModify():
 @app.route("/user",methods=['POST','GET'])
 def user():
 	uID = session.get('user_id')
+	print(uID)
+	if(uID == ''):
+		return jsonify("none")
 	username = database.Database.execute("select username from user where ID = '%s'" % (uID))
 	print(username)
 	return jsonify(username)
