@@ -8,7 +8,7 @@ def  signup():
 	username = request.form['username']
 	email = request.form['email']
 	password = request.form['password']
-	countSql = "select count(email) from user where email = '%s'" % email
+	countSql = "select count(email) from user where email = '%s';" % email
 	count = database.Database.execute(countSql)
 	# print (result[0][0])
 	'''
@@ -20,7 +20,7 @@ def  signup():
 			'errorcode':1
 		}
 	else:
-		insertSql = "insert into user(username,password,email) values('%s','%s','%s')" % (username,password,email)
+		insertSql = "insert into user(username,password,email) values('%s','%s','%s');" % (username,password,email)
 		result = database.Database.execute(insertSql)
 		# print(result)
 		if(result is ()):

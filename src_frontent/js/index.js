@@ -23,7 +23,7 @@ function index_showDiary(title, postDate, content, commentNum, diaryId) {
 		<a href="`+url+`">` + title + `</a>
 	</h4>
 	<span class="post-date">`+ postDate + `</span>
-	<p class="dia-summary">`+ content + `</p>
+	<pre class="dia-summary">`+ content + `</pre>
 	<div class="comment">
 		<input type="button" class="comment-btn comment-list get-comments" value="已评论(`+ commentNum + `)">
 		<!-- 当评论数为0时，加上disable-cusor标签 -->

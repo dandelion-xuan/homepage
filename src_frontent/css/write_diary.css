@@ -23,7 +23,7 @@
 
 }
 #sendDiaryForm{
-
+    margin: auto 120px;
 }
 #categoryForm .col-md-1{
     /* float: left; */

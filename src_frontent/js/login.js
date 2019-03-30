@@ -30,7 +30,8 @@ $(function(){
 	$('#password').togglePassword({
 		el: '#togglePassword'
 });
-showUser()
+// showUser()
+
 	$("#loginSubmit").click(function(e){
 		e.preventDefault();
 		var email=$('#email').val();
@@ -50,13 +51,19 @@ showUser()
 				if(data){
 				   if(data.errorcode==1){
 					alert('该用户名不存在，请重新输入');
+					$('#email').val('')
+					$('#password').val('')
 					// mailError()
 				   }else if(data.errorcode == 0){
-					   alert('login成功');
+					  //  alert('login成功');
+					$('#email').val('')
+					$('#password').val('')
 					window.location.href="/";
 				   }
 				 	else{
 					alert('密码错误')
+					$('#email').val('')
+					$('#password').val('')
 					}
 				}
 			  },

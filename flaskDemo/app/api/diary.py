@@ -19,7 +19,7 @@ def  diary():
 	# 实际上应该判断有无cookie，即登录态
 	# 未解决：编码问题
 	if(isNewCategory == 'true'):
-		addCategorySql = "insert into dia_category(title,user_id) values('%s','%s')" % (category,uID)
+		addCategorySql = "insert into dia_category(title,user_id) values('%s','%s');" % (category,uID)
 		cateResult = database.Database.execute(addCategorySql)
 		# 获取新增的该category ID
 		# categoryID = database.Database.get_last_insert_id()
@@ -31,10 +31,10 @@ def  diary():
 				'errorcode':2
 			}
 
-	categoryID = database.Database.execute("select ID from dia_category where title = '%s' and user_id = '%s'" % (category, uID))[0][0]
+	categoryID = database.Database.execute("select ID from dia_category where title = '%s' and user_id = '%s';" % (category, uID))[0][0]
 	print(categoryID)
 	print(uID)
-	sql = "insert into diary(title,content,user_id,category_id) values('%s','%s','%s','%s')" % (title,content,uID,categoryID)
+	sql = "insert into diary(title,content,user_id,category_id) values('%s','%s','%s','%s');" % (title,content,uID,categoryID)
 	result = database.Database.execute(sql)
 	# insert diary success
 	if(result is ()):
@@ -46,7 +46,7 @@ def  diary():
 		}
 		dia_id = database.Database.get_last_insert_id()
 		print(dia_id)
-		addDiaNumSql = "update dia_category set diaNum = diaNum + 1 where ID = '%s'" % (categoryID)
+		addDiaNumSql = "update dia_category set diaNum = diaNum + 1 where ID = '%s';" % (categoryID)
 		if(database.Database.execute(addDiaNumSql) is not ()):
 			data = {
 				'message':'update diaNum faile',
@@ -68,7 +68,7 @@ def  get_categories():
 	uID = session.get('user_id')
 	print(uID)
 	
-	categories = database.Database.execute("select title from dia_category where user_id = '%s'" % (uID))
+	categories = database.Database.execute("select title from dia_category where user_id = '%s';" % (uID))
 	# print(len(categories))
 	categoriesArr = []
 	for i in range(len(categories)):
@@ -93,6 +93,6 @@ WHERE A.category_id = B.ID AND A.user_id=1;
 @app.route("/get_diary",methods=['POST','GET'])
 def get_diary():
 	dia_id = request.values['dia_id']
-	diary = database.Database.execute("SELECT A.ID AS dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name from diary AS A,dia_category AS B WHERE A.category_id = B.ID AND A.ID = '%s'" % (dia_id))
+	diary = database.Database.execute("SELECT A.ID AS dia_id,uploadDate,A.title,content,commentNum,A.user_id,category_id,B.title AS category_name from diary AS A,dia_category AS B WHERE A.category_id = B.ID AND A.ID = '%s';" % (dia_id))
 	return jsonify(diary)
 

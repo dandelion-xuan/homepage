@@ -9,7 +9,7 @@ def  mind():
 	print(uID)
 	content = request.form['content']
 	print (content)
-	sql = "insert into mind(user_id,content) values('%s','%s')" % (uID,content)
+	sql = "insert into mind(user_id,content) values('%s','%s');" % (uID,content)
 	result = database.Database.execute(sql)
 	'''
 	errorcode:0表示插入成功，1表示插入失败
@@ -33,6 +33,6 @@ def  mind():
 def  get_minds():
 	uID = session.get('user_id')
 	print(uID)
-	minds = database.Database.execute("select content, uploadDate, commentNum, ID from mind where user_id = '%s' order by ID desc" % (uID))
+	minds = database.Database.execute("select content, uploadDate, commentNum, ID from mind where user_id = '%s' order by ID desc;" % (uID))
 	# print(len(minds))
 	return jsonify(minds)

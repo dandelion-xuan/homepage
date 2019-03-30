@@ -239,7 +239,7 @@ a:hover{
   width: 65px;
   right: 40px;
   bottom: 30px;
-  position: absolute;
+  position: fixed;
   margin-right: 0;
   margin-bottom: 0;
   padding: 0;

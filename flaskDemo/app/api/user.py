@@ -58,6 +58,6 @@ def user():
 	print(uID)
 	if(uID == ''):
 		return jsonify("none")
-	username = database.Database.execute("select username from user where ID = '%s'" % (uID))
+	username = database.Database.execute("select username from user where ID = '%s';" % (uID))
 	print(username)
 	return jsonify(username)
