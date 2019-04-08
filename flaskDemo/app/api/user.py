@@ -52,12 +52,15 @@ def userModify():
 			}
 	return jsonify(data)
 
+# 判断用户是否登录
 @app.route("/user",methods=['POST','GET'])
 def user():
 	uID = session.get('user_id')
 	print(uID)
-	if(uID == ''):
+	if(uID):
+		username = database.Database.execute("select username from user where ID = '%s';" % (uID))
+		print(username)
+		return jsonify(username)
+	else:
+		print("no user!!!!")
 		return jsonify("none")
-	username = database.Database.execute("select username from user where ID = '%s';" % (uID))
-	print(username)
-	return jsonify(username)

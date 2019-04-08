@@ -33,6 +33,9 @@ def  mind():
 def  get_minds():
 	uID = session.get('user_id')
 	print(uID)
-	minds = database.Database.execute("select content, uploadDate, commentNum, ID from mind where user_id = '%s' order by ID desc;" % (uID))
+	if(uID):
+		minds = database.Database.execute("select content, uploadDate, commentNum, ID from mind where user_id = '%s' order by ID desc;" % (uID))
 	# print(len(minds))
-	return jsonify(minds)
+		return jsonify(minds)
+	else:
+		return jsonify(uID)

@@ -37,7 +37,7 @@ function index_showDiary(title, postDate, content, commentNum, diaryId) {
 	console.log(content)
 }
 
-
+// 加号图标部分
 $(document).ready(function(){
 	
 	var links = [

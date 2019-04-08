@@ -1,4 +1,4 @@
-var host = 'http://127.0.0.1:8888/'
+// var host = 'http://127.0.0.1:8888/'
 // $.validator.setDefaults({
 //   submitHandler: function() {
 //     alert("提交事件!");

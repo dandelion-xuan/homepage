@@ -400,7 +400,11 @@ function showUser() {
 		},
 		crossDomain: true,
 		success: function (data) {
-			$("#username").html(data);
+			if(data == "none"){
+				window.location.href = "/html/login.html"
+			}else{
+				$("#username").html(data);
+			}
 			console.log("username:" + data)
 		},
 		error: function (data) { console.log("error:" + data) }
