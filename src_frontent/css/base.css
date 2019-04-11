@@ -19,7 +19,7 @@ body{
 	font-size: 15px;
 	background-color: #e1f3da;
 }
-#login,#signup{
+#login,#signup{ 
 	margin-top: 200px;
 }
 .btn-yes{
