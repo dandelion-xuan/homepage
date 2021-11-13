@@ -14,7 +14,7 @@ import traceback
 
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from flask_bootstrap import Bootstrap
-from werkzeug import secure_filename
+from werkzeug.utils  import secure_filename
 
 from lib.upload_file import uploadfile
 
